@@ -1,75 +1,79 @@
-// Tabs umschalten
-function showTab(tabId) {
-  // Alle Tabs ausblenden
-  document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GREDDO Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">GREDDO</div>
+    <nav>
+      <button onclick="showTab('status', event)" class="active">Status</button>
+      <button onclick="showTab('project', event)">Project</button>
+      <button onclick="showTab('event', event)">Event</button>
+    </nav>
+    <div id="header-countdown"></div>
+    <button id="dark-mode-toggle">🌙</button>
+  </header>
 
-  // Buttons zurücksetzen
-  document.querySelectorAll('header nav button').forEach(btn => btn.classList.remove('active'));
+  <main>
+    <!-- Status Tab -->
+    <section id="status" class="tab-content" style="display:block;">
+      <h2>System Status</h2>
+      <div class="status-card">
+        <h3>🎮 GREDDO | Germany</h3>
+        <div class="status-info">
+          <span class="status-dot green"></span> <strong>ONLINE</strong>
+        </div>
+      </div>
+      <div class="status-card">
+        <h3>🤖 GREDDO Support Bot <span class="tag">BOT</span></h3>
+        <div class="status-info">
+          <span class="status-dot yellow"></span> <strong>ISSUE</strong>
+        </div>
+      </div>
+      <div class="status-card">
+        <h3>🤖 GREDDO Administration <span class="tag">BOT</span></h3>
+        <div class="status-info">
+          <span class="status-dot yellow"></span> <strong>ISSUE</strong>
+        </div>
+      </div>
+    </section>
 
-  // Aktuellen Tab einblenden
-  document.getElementById(tabId).style.display = 'block';
+    <!-- Project Tab -->
+    <section id="project" class="tab-content" style="display:none;">
+      <h2>Project: GREDDO | Germany</h2>
+      <div class="project-box">
+        <div class="progress-bar">
+          <div class="progress" style="width: 100%"></div>
+        </div>
+        <span>100%</span>
+        <span class="tag">RELEASE TODAY</span>
+      </div>
+    </section>
 
-  // Aktiven Button hervorheben
-  event.target.classList.add('active');
-}
+    <!-- Event Tab -->
+    <section id="event" class="tab-content" style="display:none;">
+      <h2>Next Event</h2>
+      <p>21:00 (German Time) - Release GREDDO | Germany</p>
+      <div id="countdown"></div>
+    </section>
+  </main>
 
-// Countdown für Event (21:00 Uhr)
-function startCountdown() {
-  const countdownElement = document.getElementById('countdown');
-  const headerCountdown = document.getElementById('header-countdown');
+  <!-- News Ticker -->
+  <div class="news-ticker">
+    <marquee behavior="scroll" direction="left">
+      Today at 21:00 CET: Release of GREDDO | Germany
+    </marquee>
+  </div>
 
-  const eventTime = new Date();
-  eventTime.setHours(21, 0, 0, 0); // 21:00 Uhr
+  <script src="script.js"></script>
+</body>
+</html>
 
-  function updateCountdown() {
-    const now = new Date();
-    let diff = eventTime - now;
 
-    if (diff <= 0) {
-      countdownElement.textContent = 'Event gestartet!';
-      headerCountdown.textContent = '';
-      clearInterval(timer);
-      return;
-    }
-
-    const hours = Math.floor(diff / 1000 / 60 / 60);
-    const minutes = Math.floor((diff / 1000 / 60) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    const timeText = `${hours}h ${minutes}m ${seconds}s`;
-    countdownElement.textContent = timeText;
-    headerCountdown.textContent = `Nächstes Event in: ${timeText}`;
-  }
-
-  updateCountdown();
-  const timer = setInterval(updateCountdown, 1000);
-}
-
-// Dummy Systemstatus laden
-function loadStatus() {
-  const statusContainer = document.getElementById('status-container');
-  const systems = [
-    { name: 'API Server', status: 'Online', color: 'green' },
-    { name: 'Database', status: 'Online', color: 'green' },
-    { name: 'Web App', status: 'Online', color: 'green' },
-    { name: 'Payment Service', status: 'Maintenance', color: 'orange' }
-  ];
-
-  systems.forEach(system => {
-    const div = document.createElement('div');
-    div.style.padding = '8px';
-    div.style.borderBottom = '1px solid #ddd';
-    div.innerHTML = `<strong>${system.name}</strong>: 
-                     <span style="color:${system.color};">${system.status}</span>`;
-    statusContainer.appendChild(div);
-  });
-}
-
-// Initialisierung
-document.addEventListener('DOMContentLoaded', () => {
-  startCountdown();
-  loadStatus();
-});
 
 
 
