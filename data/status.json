@@ -1,0 +1,20 @@
+{
+  "game": {
+    "name": "GREDDO | Germany",
+    "status": "ok"
+  },
+  "bots": [
+    {
+      "name": "GREDDO Support Service",
+      "status": "error"
+    },
+    {
+      "name": "GREDDO Administration",
+      "status": "error"
+    }
+  ]
+}
+
+
+
+

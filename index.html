@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GREDDO Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">GREDDO</div>
+    <nav>
+      <button onclick="showTab('status')" class="active">Status</button>
+      <button onclick="showTab('project')">Project</button>
+      <button onclick="showTab('event')">Event</button>
+    </nav>
+    <div id="header-countdown"></div>
+  </header>
+
+  <main>
+    <!-- Status Tab -->
+    <section id="status" class="tab-content">
+      <h2>System Status</h2>
+      <div id="status-container">
+        <!-- Status info loaded by script.js -->
+      </div>
+    </section>
+
+    <!-- Project Tab -->
+    <section id="project" class="tab-content" style="display:none;">
+      <h2>Project: GREDDO | Germany</h2>
+      <div class="project-box">
+        <div class="progress-bar">
+          <div class="progress" style="width: 80%"></div>
+        </div>
+        <span>80%</span>
+        <span class="tag">RELEASE TODAY</span>
+      </div>
+    </section>
+
+    <!-- Event Tab -->
+    <section id="event" class="tab-content" style="display:none;">
+      <h2>Next Event</h2>
+      <p>21:00 (German Time) - Release GREDDO | Germany</p>
+      <div id="countdown"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
