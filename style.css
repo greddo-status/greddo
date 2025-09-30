@@ -201,6 +201,41 @@ body.dark .news-ticker {
   background: #005bb5;
 }
 
+/* Pulse Effekt */
+@keyframes pulseOnline {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.6); }
+  70% { box-shadow: 0 0 15px 10px rgba(0, 255, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+}
+
+@keyframes pulseMaintenance {
+  0% { box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.6); }
+  70% { box-shadow: 0 0 15px 10px rgba(255, 165, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 165, 0, 0); }
+}
+
+@keyframes pulseOffline {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6); }
+  70% { box-shadow: 0 0 15px 10px rgba(255, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+/* Status Styles mit Pulse */
+.status-online {
+  color: #0f0;
+  animation: pulseOnline 2s infinite;
+}
+
+.status-maintenance {
+  color: #ffa500;
+  animation: pulseMaintenance 2s infinite;
+}
+
+.status-offline {
+  color: #f00;
+  animation: pulseOffline 2s infinite;
+}
+
 
 
 
